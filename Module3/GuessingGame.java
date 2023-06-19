@@ -73,7 +73,7 @@ public class GuessingGame
 
                         if (currentGuess == randomNumber)    // Guess is correct
                         {
-                            System.out.println( "Correct! Play again.\n" );
+                            System.out.println( "Correct! Play again." );
                             count = 0;    // Reset count to 0
                         }
                         else if (currentGuess >= randomNumber)    // Guess is too high

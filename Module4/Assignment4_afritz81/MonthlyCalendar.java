@@ -12,6 +12,8 @@
 
 import java.util.Scanner;
 
+import javax.swing.filechooser.FileFilter;
+
 public class MonthlyCalendar
 {
     public static void main( String [] args)
@@ -33,22 +35,31 @@ public class MonthlyCalendar
         userYear = inputYear.nextInt();    // Input second value (year)
 
         // Determine if leap year
-        boolean leapYear = false;
-        leapYear = isLeapYear(userYear);
+        //boolean leapYear = false;
+        //leapYear = isLeapYear(userYear);
 
         // Get the name of the month
-        String monthName = "";
-        monthName = getMonthName(userMonth);
+        //String monthName = "";
+        //monthName = getMonthName(userMonth);
 
         // Get the number of days in the month
-        int daysMonth = 0;
-        daysMonth = getNumDaysInMonth(userMonth, userYear);
-        System.out.println("Here are days in month: " + daysMonth);
+        //int daysMonth = 0;
+        //daysMonth = getNumDaysInMonth(userMonth, userYear);
+        //System.out.println("Here are days in month: " + daysMonth);
 
         // Get the start day of the month
-        int startDay = 0;
-        startDay = getStartDay(userMonth, 1, userYear);
-        System.out.println("Here is the start day: " + startDay);
+        //int startDay = 0;
+        //startDay = getStartDay(userMonth, 1, userYear);
+        //System.out.println("Here is the start day: " + startDay);
+
+        // Print the calendar
+        printMonthCalendar(userMonth, userYear);
+
+        // Set up the calendar header
+        //printMonthHeader(userMonth, userYear);
+
+        // Set up the calendar body
+        //printMonthBody(userMonth, userYear);
     }
     public static boolean isLeapYear(int y)
     {
@@ -212,5 +223,72 @@ public class MonthlyCalendar
         
         return dayNum;
   }
+  public static void printMonthHeader(int m, int y)
+  {
+    // Get the name of the month 
+    String monthName = "";
+    monthName = getMonthName(m);
 
+    // Print the header
+    System.out.print("\n\n");
+    System.out.println("\t" + monthName + " " + y + "\t");
+    System.out.println("-----------------------------");
+    System.out.println(" Sun Mon Tue Wed Thu Fri Sat ");
+  }
+  public static void printMonthBody(int m, int y)
+  {
+        // Get number of days in month
+        int daysMonth = 0;
+        daysMonth = getNumDaysInMonth(m, y);
+
+        // Get the start day (1 - Monday : 7 - Sunday)
+        int startDay = 0;
+        startDay = getStartDay(m, 1, y);
+
+        // Find the sum of days for first week
+        double sumDays = 0.0;
+        double oneDay = ( 1 / 7.0 );
+        if (startDay == 7)    // Start at first position for Sun
+        {
+            sumDays = oneDay;
+        }
+        else
+        {
+            sumDays = (( 1 + startDay ) / 7.0 );    // Start at later positions for Mon-Sat
+        }
+        
+        // Loop through month
+        int i = 0;    // Loops for number of days in month
+        double j = oneDay;    // Loops for number of days prior to start day
+        for (i = 1; i <= daysMonth; i++)
+        {
+            while (j <= (sumDays - oneDay))    // Loop until 1 day prior to start day
+            {
+                System.out.print("    ");    // Add spaces if start day is not Sun
+                j += oneDay;
+            }
+            while (sumDays <= (oneDay * 7) && i <= daysMonth)    // Counts days in week so far
+            {
+                if (i < 10)
+                {
+                    System.out.print("   " + i);    // Three spaces between single digits
+                }
+                else
+                {
+                    System.out.print("  " + i);    // Two spaces between double digits
+                }
+                i++;
+                sumDays += oneDay;    // Adds one day to current count of week
+            }
+        i -= 1;    // Prevent i from being double counted in a new week
+        sumDays = oneDay;    // Reset weekly count
+        System.out.print("\n");    // Print new line once week complete
+        }
+  }
+  public static void printMonthCalendar(int m, int y)
+  {
+    printMonthHeader(m, y);    // Print calendar header
+    printMonthBody(m, y);      // Print calendar body
+  }
 }
+

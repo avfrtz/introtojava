@@ -1,40 +1,44 @@
-/*
+/**
 * Ava Fritz
 * 06/25/2023
 * This program:
-* 1. Takes user input for month (1-12) and year (YYYY)
-* 2. Outputs a calendar for that month
+* 1. Takes user input for year (YYYY)
+* 2. Outputs a 12-month calendar for that year
 * Assumptions:
 * 1. Leap years are considered
 * 2. Day of interest is first day of month
 * 3. No Java date libraries
-*/
+**/
 
 import java.util.Scanner;
 
-public class MonthlyCalendar
+public class YearlyCalendar
 {
     public static void main( String [] args)
     {
         // Define and initialize input variables
-        int userMonth = 0;    // First value to be input (month)
-        int userYear = 0;     // Second value to be input (year)
-
-        // Use a Scanner to input month
-        Scanner inputMonth = new Scanner( System.in );
-        System.out.println( "\n\n" );
-        System.out.print( "Enter month (1-12): ");
-        userMonth = inputMonth.nextInt();    // Input first value (month)
+        int userYear = 0;     // First value to be input (year)
 
         // Use a Scanner to input year
         Scanner inputYear = new Scanner( System.in );
         System.out.println( "\n\n" );
         System.out.print( "Enter year (YYYY): ");
-        userYear = inputYear.nextInt();    // Input second value (year)
+        userYear = inputYear.nextInt();    // Input value (year)
 
-        // Print the calendar
-        printMonthCalendar(userMonth, userYear);
-
+        // Print the year at a glance
+        // Months 1-12 correspond to Jan-Dec
+        printMonthCalendar(1, userYear);
+        printMonthCalendar(2, userYear);
+        printMonthCalendar(3, userYear);
+        printMonthCalendar(4, userYear);
+        printMonthCalendar(5, userYear);
+        printMonthCalendar(6, userYear);
+        printMonthCalendar(7, userYear);
+        printMonthCalendar(8, userYear);
+        printMonthCalendar(9, userYear);
+        printMonthCalendar(10, userYear);
+        printMonthCalendar(11, userYear);
+        printMonthCalendar(12, userYear);
     }
     /**
      * This method determines if a year is a leap year and returns the boolean.

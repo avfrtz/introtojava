@@ -26,12 +26,12 @@ public class TemperatureConversion2
 
         case 1:     // Convert Fahrenheit to Celsius
 
-                    convertToFahrenheit();
+                    convertToCelsius();
                     break;
 
         case 2:     // Convert Celsius to Fahrenheit
 
-                    convertToCelsius();
+                    convertToFahrenheit();
                     break;
 
         case 3:     // End Program

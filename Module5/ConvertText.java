@@ -71,17 +71,21 @@ public class ConvertText
     {
         // Initialize variables
         int lenStr = a.length();
+        int i = 0;
+        int j = 0;
         System.out.println(lenStr);
-        String [][] engMorseArray = {{"A", ".-"}, {"B", "-..."}};
-        if (String.valueOf(a.charAt(0)).equals(engMorseArray[0][0]))
+        String [][] engMorseArray = {{"A", ".-"}, {"B", "-..."}, {" ", "|"}};
+        for (i = 0; i < lenStr; i++)
         {
-            System.out.println(engMorseArray[0][1]);
+            for (j = 0; j < 2; j++)
+            {
+            if (String.valueOf(a.charAt(i)).equals(engMorseArray[j][0]))
+            {
+                System.out.print(engMorseArray[j][1]);
+                System.out.print(" "); // put a space to delineate letters
+            }
         }
-        else
-        {
-            System.out.println("Not it");
         }
-
     }
     public static void morseToEnglish(String b)
     {
